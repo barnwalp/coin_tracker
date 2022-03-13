@@ -67,4 +67,37 @@ nav .logo {
 .btn:hover {
   opacity: 0.8;
 }
+
+.display-container {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.display-container .coin {
+  margin: 16px;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.display-container .coin .left {
+  display: inline-block;
+}
+
+.display-container .coin .left .coin-name {
+  font-weight: 500;
+}
+
+.display-container .coin .remove {
+  background: -webkit-gradient(linear, left top, right top, from(red), to(#a02828));
+  background: linear-gradient(90deg, red, #a02828);
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */
