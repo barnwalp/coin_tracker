@@ -15,8 +15,8 @@
   <nav>
     <img class="logo" src="images/coin_tracker_logo.png" alt="logo">
     <div class="buttons">
-      <button class="btn">Refresh</button>
-      <button class="btn">Add Symbol</button>
+      <button id="refresh" class="btn">Refresh</button>
+      <button id="add" class="btn">Add Symbol</button>
     </div>
   </nav>
   <!-- <div class="hidden" class="container">
@@ -27,10 +27,22 @@
       <button>Add</button>
     </div>
   </div> -->
-  <div class="coin-items">
-    <!-- <div class="coin-data"></div>
-    <button>Remove</button> -->
-  </div> 
+  <div class="display-container">
+    <div class="coin">
+      <div class="left">
+        <div class="coin-name">ETHBTC</div>
+        <div class="coin-price">0.06634000 - 0.06614391</div>
+      </div>
+      <button class="btn remove">Remove</button>
+    </div> 
+    <div class="coin">
+      <div class="left">
+        <div class="coin-name">LTCBTC</div>
+        <div class="coin-price">0.00273700 - 0.00271612</div>
+      </div>
+      <button class="btn remove">Remove</button>
+    </div> 
+  </div>
 </body>
 <!-- ion-icon script cdn -->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
