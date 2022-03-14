@@ -68,6 +68,10 @@ nav .logo {
   opacity: 0.8;
 }
 
+.container {
+  visibility: hidden;
+}
+
 .display-container {
   width: 80%;
   margin: 0 auto;

@@ -1,20 +1,9 @@
-console.log('test');
+let data;
 const container = document.querySelector('.display-container');
 const refresh_btn = document.getElementById('refresh');
-const add_btn = document.getElementById('add');
+const add_symbol = document.getElementById('add-symbol');
 const remove = document.querySelector('.remove');
-
-add_btn.addEventListener('click', function(){
-  console.log(add_btn);
-});
-
-refresh_btn.addEventListener('click', function(){
-  console.log(refresh_btn);
-});
-
-remove.addEventListener('click', function(){
-  console.log(remove);
-})
+const search_items = document.querySelector('.search-items');
 
 // ########### API ###########
 var request = new XMLHttpRequest();
@@ -24,9 +13,45 @@ request.onload = function() {
   if(request.status != 200) {
     console.log(`Error ${request.status}: ${request.statusText}`);
   } else {
-    let data = JSON.parse(request.response);
-    data.forEach(crypto => {
-      console.log(crypto.symbol);
-    });
+    data = JSON.parse(request.response);
+    // data.forEach(crypto => {
+    //   console.log(crypto.symbol);
+    // });
   }
 }
+// console.log(data);
+
+// Adding data to the container using javascript
+const coin = document.createElement('div');
+coin.setAttribute('class', 'coin');
+
+const left = document.createElement('div');
+left.setAttribute('class', 'left');
+
+const coin_name = document.createElement('div');
+coin_name.setAttribute('class', 'coin-name')
+
+const coin_price = document.createElement('div');
+coin_price.setAttribute('class', 'coin-price');
+
+const add_btn = document.createElement('button');
+add_btn.setAttribute('class', 'btn add');
+
+search_items.append(coin);
+coin.append(left);
+left.append(coin_name);
+left.append(coin_price);
+coin.append(add_btn);
+
+
+add_symbol.addEventListener('click', function(){
+  console.log(add_symbol);
+});
+
+refresh_btn.addEventListener('click', function(){
+  console.log(refresh_btn);
+});
+
+remove.addEventListener('click', function(){
+  console.log(remove);
+})
