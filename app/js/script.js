@@ -1,9 +1,10 @@
 let data;
-const container = document.querySelector('.display-container');
+const display_container = document.querySelector('.display-container');
 const refresh_btn = document.getElementById('refresh');
 const add_symbol = document.getElementById('add-symbol');
 const remove = document.querySelector('.remove');
 const search_items = document.querySelector('.search-items');
+const container = document.querySelector('.container');
 
 // ########### API ###########
 var request = new XMLHttpRequest();
@@ -49,7 +50,12 @@ request.onload = function() {
 
 
 add_symbol.addEventListener('click', function(){
-  console.log(add_symbol);
+  if (container.classList.contains('hidden')) {
+    container.classList.remove('hidden');
+  } else {
+    container.classList.add('hidden');
+  } 
+  // console.log(add_symbol);
 });
 
 refresh_btn.addEventListener('click', function(){
