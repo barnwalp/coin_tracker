@@ -5,6 +5,7 @@ const add_symbol = document.getElementById('add-symbol');
 const remove = document.querySelector('.remove');
 const search_items = document.querySelector('.search-items');
 const container = document.querySelector('.container');
+const overlay = document.querySelector('.overlay');
 
 // ########### API ###########
 var request = new XMLHttpRequest();
@@ -46,8 +47,6 @@ request.onload = function() {
   }
 }
 // console.log(data);
-
-
 
 add_symbol.addEventListener('click', function(){
   if (container.classList.contains('hidden')) {

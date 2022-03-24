@@ -68,8 +68,29 @@ nav .logo {
   opacity: 0.8;
 }
 
+.overlay {
+  visibility: hidden;
+  position: absolute;
+  top: 3.75rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00b2c6), to(#90e987));
+  background: linear-gradient(#00b2c6, #90e987);
+}
+
 .hidden {
   display: none;
+}
+
+.container {
+  background-color: white;
+  height: 100vh;
+  width: 31.25rem;
+  position: fixed;
+  top: 5rem;
+  right: 30px;
+  overflow-y: scroll;
 }
 
 .display-container {

@@ -1,3 +1,23 @@
+.overlay {
+  visibility: hidden;
+  position: absolute;
+  top: size(60);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient($SkyBlue, $LightGreen);
+}
+
 .hidden {
   display: none;
+}
+
+.container {
+  background-color: white;
+  height: 100vh;
+  width: size(500);
+  position: fixed;
+  top: size(80);
+  right: 30px;
+  overflow-y: scroll;
 }
