@@ -51,8 +51,12 @@ request.onload = function() {
 add_symbol.addEventListener('click', function(){
   if (container.classList.contains('hidden')) {
     container.classList.remove('hidden');
+    overlay.classList.add('fade-in');
+    overlay.classList.remove('fade-out');
   } else {
     container.classList.add('hidden');
+    overlay.classList.remove('fade-in');
+    overlay.classList.add('fade-out');
   } 
   // console.log(add_symbol);
 });

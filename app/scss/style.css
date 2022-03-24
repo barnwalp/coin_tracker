@@ -68,6 +68,72 @@ nav .logo {
   opacity: 0.8;
 }
 
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  99% {
+    visibility: hidden;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  99% {
+    visibility: hidden;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.fade-in {
+  -webkit-animation: fade-in 300ms ease-in-out 1 forwards;
+          animation: fade-in 300ms ease-in-out 1 forwards;
+}
+
+.fade-out {
+  -webkit-animation: fade-out 300ms ease-in-out 1 forwards;
+          animation: fade-out 300ms ease-in-out 1 forwards;
+}
+
 .overlay {
   visibility: hidden;
   position: absolute;
@@ -75,8 +141,8 @@ nav .logo {
   left: 0;
   right: 0;
   bottom: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#00b2c6), to(#90e987));
-  background: linear-gradient(#00b2c6, #90e987);
+  background: -webkit-gradient(linear, left top, left bottom, from(#3a3939), to(white));
+  background: linear-gradient(#3a3939, white);
 }
 
 .hidden {
