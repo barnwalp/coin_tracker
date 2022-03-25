@@ -20,4 +20,11 @@
   top: size(80);
   right: 30px;
   overflow-y: scroll;
+  border-radius: 5px;
+  #coin-search {
+    width: 93%;
+    margin: 16px;
+    padding: 12px;
+    border-radius: 8px;
+  }
 }

@@ -3,22 +3,22 @@
   // border: 1px solid black;
   margin: 0 auto;
   margin-top: 16px;
-  .coin {
-    margin: 16px;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding: 8px;
-    display: flex;
-    justify-content: space-between;
-    .left {
-      display: inline-block;
-      .coin-name {
-        font-weight: 500;
-      }
+}
+.coin {
+  margin: 16px;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  .left {
+    display: inline-block;
+    .coin-name {
+      font-weight: 500;
     }
-    .remove {
-      background: linear-gradient(90deg, red, rgb(160, 40, 40));
-      color: white;
-    }
+  }
+  .remove {
+    background: linear-gradient(90deg, red, rgb(160, 40, 40));
+    color: white;
   }
 }

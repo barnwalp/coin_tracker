@@ -157,6 +157,14 @@ nav .logo {
   top: 5rem;
   right: 30px;
   overflow-y: scroll;
+  border-radius: 5px;
+}
+
+.container #coin-search {
+  width: 93%;
+  margin: 16px;
+  padding: 12px;
+  border-radius: 8px;
 }
 
 .display-container {
@@ -165,7 +173,7 @@ nav .logo {
   margin-top: 16px;
 }
 
-.display-container .coin {
+.coin {
   margin: 16px;
   border-radius: 5px;
   border: 1px solid black;
@@ -178,15 +186,15 @@ nav .logo {
           justify-content: space-between;
 }
 
-.display-container .coin .left {
+.coin .left {
   display: inline-block;
 }
 
-.display-container .coin .left .coin-name {
+.coin .left .coin-name {
   font-weight: 500;
 }
 
-.display-container .coin .remove {
+.coin .remove {
   background: -webkit-gradient(linear, left top, right top, from(red), to(#a02828));
   background: linear-gradient(90deg, red, #a02828);
   color: white;
