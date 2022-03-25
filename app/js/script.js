@@ -12,11 +12,11 @@ const search = document.getElementById('coin-search');
 const load_coins = async () => {
   try {
     const res = await fetch('https://api2.binance.com/api/v3/ticker/24hr');
-    coin_data = await res.json();
-    console.log(coin_data);
-    display_coin(coin_data);
+    data = await res.json();
+    console.log(data);
+    display_coin(data);
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 };
 // var request = new XMLHttpRequest();
@@ -54,8 +54,8 @@ const load_coins = async () => {
 //   }
 // }
 
-const display_coin = (data) => {
-  const htmlString = data.map(coin => {
+const display_coin = (coin_data) => {
+  const htmlString = coin_data.map(coin => {
     return `
     <div class="coin">
       <div class="left">
@@ -68,6 +68,14 @@ const display_coin = (data) => {
   }).join("");
   search_items.innerHTML = htmlString;
 }
+
+search.addEventListener('keyup', (e) => {
+  const searchString = e.target.value.toLowerCase();
+  const filtered_data = data.filter(coin => {
+    return coin.symbol.toLowerCase().includes(searchString)
+  });
+  display_coin(filtered_data);
+})
 
 add_symbol.addEventListener('click', function(){
   if (container.classList.contains('hidden')) {
