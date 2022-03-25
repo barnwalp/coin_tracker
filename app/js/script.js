@@ -9,40 +9,50 @@ const overlay = document.querySelector('.overlay');
 const search = document.getElementById('coin-search');
 
 // ########### API ###########
-var request = new XMLHttpRequest();
-request.open('GET', 'https://api2.binance.com/api/v3/ticker/24hr', true);
-request.send();
-request.onload = function() {
-  if(request.status != 200) {
-    console.log(`Error ${request.status}: ${request.statusText}`);
-  } else {
-    data = JSON.parse(request.response);
-    // Adding data to the container using javascript
-    display_coin(data);
+const load_coins = async () => {
+  try {
+    const res = await fetch('https://api2.binance.com/api/v3/ticker/24hr');
+    coin_data = await res.json();
+    console.log(coin_data);
+    display_coin(coin_data);
+  } catch (err) {
+    console.log(err);
   }
-}
-    // data.forEach(crypto => {
-    //   const coin = document.createElement('div');
-    //   coin.setAttribute('class', 'coin');
-    //   const left = document.createElement('div');
-    //   left.setAttribute('class', 'left');
-    //   const coin_name = document.createElement('div');
-    //   coin_name.setAttribute('class', 'coin-name')
-    //   coin_name.textContent = crypto.symbol;
-    //   const coin_price = document.createElement('div');
-    //   coin_price.setAttribute('class', 'coin-price');
-    //   let price = `${crypto.lastPrice} - ${crypto.weightedAvgPrice}`
-    //   coin_price.textContent = price;
-    //   console.log(price);
-    //   const add_btn = document.createElement('button');
-    //   add_btn.setAttribute('class', 'btn add');
-    //   add_btn.textContent = 'Add';
-    //   search_items.append(coin);
-    //   coin.append(left);
-    //   left.append(coin_name);
-    //   left.append(coin_price);
-    //   coin.append(add_btn);
-    // });
+};
+// var request = new XMLHttpRequest();
+// request.open('GET', 'https://api2.binance.com/api/v3/ticker/24hr', true);
+// request.send();
+// request.onload = function() {
+//   if(request.status != 200) {
+//     console.log(`Error ${request.status}: ${request.statusText}`);
+//   } else {
+//     data = JSON.parse(request.response);
+//     // Adding data to the container using javascript
+//     display_coin(data);
+//     data.forEach(crypto => {
+//       const coin = document.createElement('div');
+//       coin.setAttribute('class', 'coin');
+//       const left = document.createElement('div');
+//       left.setAttribute('class', 'left');
+//       const coin_name = document.createElement('div');
+//       coin_name.setAttribute('class', 'coin-name')
+//       coin_name.textContent = crypto.symbol;
+//       const coin_price = document.createElement('div');
+//       coin_price.setAttribute('class', 'coin-price');
+//       let price = `${crypto.lastPrice} - ${crypto.weightedAvgPrice}`
+//       coin_price.textContent = price;
+//       console.log(price);
+//       const add_btn = document.createElement('button');
+//       add_btn.setAttribute('class', 'btn add');
+//       add_btn.textContent = 'Add';
+//       search_items.append(coin);
+//       coin.append(left);
+//       left.append(coin_name);
+//       left.append(coin_price);
+//       coin.append(add_btn);
+//     });
+//   }
+// }
 
 const display_coin = (data) => {
   const htmlString = data.map(coin => {
@@ -71,7 +81,6 @@ add_symbol.addEventListener('click', function(){
     overlay.classList.add('fade-out');
     add_symbol.textContent = 'Search';
   } 
-  // console.log(add_symbol);
 });
 
 refresh_btn.addEventListener('click', function(){
@@ -81,3 +90,5 @@ refresh_btn.addEventListener('click', function(){
 remove.addEventListener('click', function(){
   console.log(remove);
 })
+
+load_coins();
