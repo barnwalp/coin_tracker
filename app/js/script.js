@@ -19,40 +19,6 @@ const load_coins = async () => {
     console.log(err)
   }
 };
-// var request = new XMLHttpRequest();
-// request.open('GET', 'https://api2.binance.com/api/v3/ticker/24hr', true);
-// request.send();
-// request.onload = function() {
-//   if(request.status != 200) {
-//     console.log(`Error ${request.status}: ${request.statusText}`);
-//   } else {
-//     data = JSON.parse(request.response);
-//     // Adding data to the container using javascript
-//     display_coin(data);
-//     data.forEach(crypto => {
-//       const coin = document.createElement('div');
-//       coin.setAttribute('class', 'coin');
-//       const left = document.createElement('div');
-//       left.setAttribute('class', 'left');
-//       const coin_name = document.createElement('div');
-//       coin_name.setAttribute('class', 'coin-name')
-//       coin_name.textContent = crypto.symbol;
-//       const coin_price = document.createElement('div');
-//       coin_price.setAttribute('class', 'coin-price');
-//       let price = `${crypto.lastPrice} - ${crypto.weightedAvgPrice}`
-//       coin_price.textContent = price;
-//       console.log(price);
-//       const add_btn = document.createElement('button');
-//       add_btn.setAttribute('class', 'btn add');
-//       add_btn.textContent = 'Add';
-//       search_items.append(coin);
-//       coin.append(left);
-//       left.append(coin_name);
-//       left.append(coin_price);
-//       coin.append(add_btn);
-//     });
-//   }
-// }
 
 const display_coin = (coin_data) => {
   const htmlString = coin_data.map(coin => {
@@ -75,7 +41,18 @@ search.addEventListener('keyup', (e) => {
     return coin.symbol.toLowerCase().includes(searchString)
   });
   display_coin(filtered_data);
-})
+});
+
+if (search_items.firstChild) {
+  const add_coins = document.querySelectorAll('.search-items .coin .add');
+  console.log(add_coins);
+  add_coins.forEach(function(add) {
+    add.addEventListener('click', (e) => {
+      console.log('inside add loop');
+      console.log(e);
+    });
+  });
+}
 
 add_symbol.addEventListener('click', function(){
   if (container.classList.contains('hidden')) {
