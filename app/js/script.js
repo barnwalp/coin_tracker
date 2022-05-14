@@ -1,5 +1,5 @@
 let data;
-const display_container = document.querySelector('.display-container');
+const display_container = document.querySelector('.portfolio');
 const refresh_btn = document.getElementById('refresh');
 const add_symbol = document.getElementById('add-symbol');
 const remove = document.querySelector('.remove');
@@ -24,9 +24,9 @@ const display_coin = (coin_data) => {
   const htmlString = coin_data.map(coin => {
     return `
     <div class="coin">
-      <div class="left">
-        <div class="coin-name">${coin.symbol}</div>
-        <div class="coin-price">${coin.lastPrice} - ${coin.weightedAvgPrice}</div>
+      <div class="coin-data">
+        <div class="coin-data-name">${coin.symbol}</div>
+        <div class="coin-data-price">${coin.lastPrice} - ${coin.weightedAvgPrice}</div>
       </div>
       <button class="btn add">Add</button>
     </div>
