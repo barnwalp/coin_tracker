@@ -1,11 +1,15 @@
 .portfolio {
-  width: 80%;
-  // border: 1px solid black;
-  margin: 0 auto;
-  margin-top: 16px;
+  // width: 80%;
+  // margin: 0 auto;
+  height: 100vh;
+  // margin-top: 16px;
+  padding: 20px;
+  background-color: $LightGray;
 }
 .coin {
-  margin: 16px;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 16px;
   border-radius: 5px;
   border: 1px solid black;
   padding: 8px;
@@ -17,8 +21,8 @@
       font-weight: 500;
     }
   }
-  .remove {
-    background: linear-gradient(90deg, red, rgb(160, 40, 40));
-    color: white;
-  }
+  // .remove {
+  //   background: linear-gradient(90deg, red, rgb(160, 40, 40));
+  //   color: white;
+  // }
 }

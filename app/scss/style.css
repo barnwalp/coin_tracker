@@ -100,8 +100,7 @@ a:hover {
 
 nav {
   padding: 8px 32px;
-  background: -webkit-gradient(linear, left top, right top, from(#00d1ab), to(#3a69a9));
-  background: linear-gradient(90deg, #00d1ab, #3a69a9);
+  background: #FFFF;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -117,12 +116,12 @@ nav .logo {
 }
 
 .btn {
-  background: #e1f1ff;
-  margin: 10px 8px;
-  padding: 4px 16px;
+  margin: 5px 8px;
+  padding: 10px 18px;
   font-size: 1.2rem;
-  border-radius: 20px;
-  border: 1px solid transparent;
+  background-color: #92003B;
+  border: none;
+  color: #FFFF;
   font-weight: 400;
   cursor: pointer;
   font-size: 1.1rem;
@@ -131,13 +130,13 @@ nav .logo {
 }
 
 .btn:hover {
-  opacity: 0.8;
+  background: #B74573;
 }
 
 .overlay {
   visibility: hidden;
   position: absolute;
-  top: 3.75rem;
+  top: 4.375rem;
   left: 0;
   right: 0;
   bottom: 0;
@@ -149,7 +148,7 @@ nav .logo {
   display: none;
 }
 
-.container {
+.search-container {
   background-color: white;
   height: 100vh;
   width: 31.25rem;
@@ -160,7 +159,7 @@ nav .logo {
   border-radius: 5px;
 }
 
-.container #coin-search {
+.search-container #coin-search {
   width: 93%;
   margin: 16px;
   padding: 12px;
@@ -168,13 +167,15 @@ nav .logo {
 }
 
 .portfolio {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 16px;
+  height: 100vh;
+  padding: 20px;
+  background-color: #F4F4F4;
 }
 
 .coin {
-  margin: 16px;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 16px;
   border-radius: 5px;
   border: 1px solid black;
   padding: 8px;
@@ -192,11 +193,5 @@ nav .logo {
 
 .coin-data-name {
   font-weight: 500;
-}
-
-.coin .remove {
-  background: -webkit-gradient(linear, left top, right top, from(red), to(#a02828));
-  background: linear-gradient(90deg, red, #a02828);
-  color: white;
 }
 /*# sourceMappingURL=style.css.map */

@@ -7,13 +7,11 @@ $base-size: 16;
 }
 
 // Colors Variables
-$DarkBlue: #3a69a9;
-$LightBlue: #008fc6;
-$SkyBlue: #00b2c6;
-$DarkGreen: #00d1ab;
-$LightGreen: #90e987;
-$LightYellow: #f9f871;
-$LightGray: #e1f1ff;
+$PrimaryColor: #92003B;
+$LightPrimaryColor: #B74573;
+$LightGray: #F4F4F4;
+$DarkGray: #2D314D;
+$White: #FFFF;
 
 // Font-size Variables
 $font-sm: size(14);
@@ -22,7 +20,6 @@ $font-lg: size(20);
 $font-xlg: size(52);
 
 // Animation
-
 @keyframes fade-in {
   from {
     opacity: 0;

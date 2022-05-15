@@ -1,7 +1,7 @@
 .overlay {
   visibility: hidden;
   position: absolute;
-  top: size(60);
+  top: size(70);
   left: 0;
   right: 0;
   bottom: 0;
@@ -12,7 +12,7 @@
   display: none;
 }
 
-.container {
+.search-container {
   background-color: white;
   height: 100vh;
   width: size(500);
