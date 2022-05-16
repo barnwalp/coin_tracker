@@ -1,4 +1,7 @@
 let data;
+let portfolio_coins = ["ETHUSDT", "BTCUSDT", "XMRUSDT", "LTCUSDT"];
+let portfolio_json = [];
+
 const portfolio = document.querySelector('.portfolio');
 const searched_coins = document.querySelector('.search-items');
 const search_container = document.querySelector('.search-container');
@@ -15,9 +18,12 @@ const load_coins = async () => {
   try {
     const res = await fetch('https://api2.binance.com/api/v3/ticker/24hr');
     data = await res.json();
+    console.log('Display json data from API');
     console.log(data);
     display_coin(data, searched_coins);
+    load_portfolio();
   } catch (err) {
+    console.log('Display error from API');
     console.log(err)
   }
 };
@@ -38,6 +44,24 @@ const display_coin = (coin_data, container) => {
     `
   }).join("");
   container.innerHTML = htmlString;
+}
+
+// Getting JSON data from symbols in portfolio_coin variable
+const create_portfolio_json = () => {
+  portfolio_json = [];
+  portfolio_coins.forEach(coin => {
+    let val = data.filter(temp => {
+      return temp.symbol.toLowerCase() == coin.toLowerCase();
+    });
+    portfolio_json.push(val[0]);
+  });
+  return portfolio_json;
+}
+
+// Creating portfolio based on the portfolio_coins variable
+const load_portfolio = () => {
+  portfolio_json = create_portfolio_json();
+  display_coin(portfolio_json, portfolio);
 }
 
 // Implementing dynamic search in the searched coin section
@@ -75,12 +99,12 @@ search_btn.addEventListener('click', function(){
   } 
 });
 
-refresh_btn.addEventListener('click', function(){
-  console.log(refresh_btn);
-});
+// refresh_btn.addEventListener('click', function(){
+//   console.log(refresh_btn);
+// });
 
-remove_btn.addEventListener('click', function(){
-  console.log(remove);
-})
+// remove_btn.addEventListener('click', function(){
+//   console.log(remove);
+// })
 
 load_coins();
