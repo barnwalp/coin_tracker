@@ -20,7 +20,7 @@ const load_coins = async () => {
     data = await res.json();
     console.log('Display json data from API');
     console.log(data);
-    display_coin(data, searched_coins);
+    display_coin(data, searched_coins, 'Add');
     load_portfolio();
   } catch (err) {
     console.log('Display error from API');
@@ -31,7 +31,7 @@ const load_coins = async () => {
 // creating html list of the cryptocurrencies with coin details
 // coin_data is the json data and container is the element to which 
 // json data is attached after being converted to html
-const display_coin = (coin_data, container) => {
+const display_coin = (coin_data, container, btn) => {
   const htmlString = coin_data.map(coin => {
     return `
     <div class="coin">
@@ -39,7 +39,7 @@ const display_coin = (coin_data, container) => {
         <div class="coin-data-name">${coin.symbol}</div>
         <div class="coin-data-price">${coin.lastPrice} - ${coin.weightedAvgPrice}</div>
       </div>
-      <button class="btn add">Add</button>
+      <button class="btn ${btn[0].toLowerCase()}${btn.slice(1)}">${btn}</button>
     </div>
     `
   }).join("");
@@ -61,7 +61,8 @@ const create_portfolio_json = () => {
 // Creating portfolio based on the portfolio_coins variable
 const load_portfolio = () => {
   portfolio_json = create_portfolio_json();
-  display_coin(portfolio_json, portfolio);
+  console.log(portfolio_json);
+  display_coin(portfolio_json, portfolio, "Remove");
 }
 
 // Implementing dynamic search in the searched coin section
@@ -72,17 +73,6 @@ search.addEventListener('keyup', (e) => {
   });
   display_coin(filtered_data, searched_coins);
 });
-
-if (searched_coins.firstChild) {
-  const add_coins = document.querySelectorAll('.search-items .coin .add');
-  console.log(add_coins);
-  add_coins.forEach(function(add) {
-    add.addEventListener('click', (e) => {
-      console.log('inside add loop');
-      console.log(e);
-    });
-  });
-}
 
 // Toggling the search coin overlay with search button
 search_btn.addEventListener('click', function(){
@@ -99,9 +89,21 @@ search_btn.addEventListener('click', function(){
   } 
 });
 
-// refresh_btn.addEventListener('click', function(){
-//   console.log(refresh_btn);
-// });
+refresh_btn.addEventListener('click', function(){
+  load_portfolio();
+
+});
+
+if (searched_coins.firstChild) {
+  const add_coins = document.querySelectorAll('.search-items .coin .add');
+  console.log(add_coins);
+  add_coins.forEach(function(add) {
+    add.addEventListener('click', (e) => {
+      console.log('inside add loop');
+      console.log(e);
+    });
+  });
+}
 
 // remove_btn.addEventListener('click', function(){
 //   console.log(remove);
