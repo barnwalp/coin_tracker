@@ -1,4 +1,5 @@
 let data;
+let tempData;
 let portfolio_coins = ["ETHUSDT", "BTCUSDT", "XMRUSDT", "LTCUSDT"];
 let portfolio_json = [];
 
@@ -71,7 +72,7 @@ search.addEventListener('keyup', (e) => {
   const filtered_data = data.filter(coin => {
     return coin.symbol.toLowerCase().includes(searchString)
   });
-  display_coin(filtered_data, searched_coins);
+  display_coin(filtered_data, searched_coins, "Add");
 });
 
 // Toggling the search coin overlay with search button
@@ -94,15 +95,16 @@ refresh_btn.addEventListener('click', function(){
 
 });
 
+// Adding crypto currency to the portfolio
 if (searched_coins.firstChild) {
-  const add_coins = document.querySelectorAll('.search-items .coin .add');
-  console.log(add_coins);
-  add_coins.forEach(function(add) {
-    add.addEventListener('click', (e) => {
-      console.log('inside add loop');
-      console.log(e);
-    });
-  });
+  searched_coins.addEventListener('click', (e) => {
+    if (e.target.className === 'btn add') {
+      let temp_coin = e.target.parentNode.childNodes[1].childNodes[1].textContent;
+      portfolio_coins.push(temp_coin);
+      load_portfolio();
+    }
+    e.stopPropagation();
+  }, false)
 }
 
 // remove_btn.addEventListener('click', function(){
