@@ -12,7 +12,6 @@ const search = document.getElementById('coin-search');
 // button references
 const refresh_btn = document.getElementById('refresh');
 const search_btn = document.getElementById('add-symbol');
-const remove_btn = document.querySelector('.remove');
 
 // ########### API ###########
 const load_coins = async () => {
@@ -58,6 +57,9 @@ const create_portfolio_json = () => {
   });
   return portfolio_json;
 }
+
+// Change Add to Added for the portflio coins
+
 
 // Creating portfolio based on the portfolio_coins variable
 const load_portfolio = () => {
@@ -107,8 +109,19 @@ if (searched_coins.firstChild) {
   }, false)
 }
 
-// remove_btn.addEventListener('click', function(){
-//   console.log(remove);
-// })
+// removing coins from the portfolio container
+// please note that event listener is added to the 
+// portfolio container and bubbling is used to connect with
+// button, this way it can be ensured that button is only
+// clicked after being loaded
+portfolio.addEventListener('click', (e) => {
+  if (e.target.className === "btn remove") {
+    let temp_coin = e.target.parentNode.childNodes[1].childNodes[1].textContent;
+    // console.log(temp_coin);
+    let index = portfolio_coins.indexOf(temp_coin);
+    portfolio_coins.splice(index, 1);
+    load_portfolio();
+  }
+})
 
 load_coins();
