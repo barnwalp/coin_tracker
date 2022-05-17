@@ -22,6 +22,7 @@ const load_coins = async () => {
     console.log(data);
     display_coin(data, searched_coins, 'Add');
     load_portfolio();
+    changeBtn();
   } catch (err) {
     console.log('Display error from API');
     console.log(err)
@@ -46,6 +47,20 @@ const display_coin = (coin_data, container, btn) => {
   container.innerHTML = htmlString;
 }
 
+// Changing add to added for selected coins in searched_coins
+const changeBtn = function() {
+  for (let i=0; i<searched_coins.children.length; i++) {
+    let coin_name = searched_coins.children[i].children[0].children[0].textContent;
+    if (portfolio_coins.indexOf(coin_name) != -1) {
+      searched_coins.children[i].children[1].textContent = "Added";
+      // console.log(searched_coins.children[i].children[1].textContent);
+    } else {
+      searched_coins.children[i].children[1].textContent = "Add";
+      // console.log(searched_coins.children[i].children[1].textContent);
+    }
+  }
+}
+
 // Getting JSON data from symbols in portfolio_coin variable
 const create_portfolio_json = () => {
   portfolio_json = [];
@@ -57,9 +72,6 @@ const create_portfolio_json = () => {
   });
   return portfolio_json;
 }
-
-// Change Add to Added for the portflio coins
-
 
 // Creating portfolio based on the portfolio_coins variable
 const load_portfolio = () => {
@@ -102,8 +114,11 @@ if (searched_coins.firstChild) {
   searched_coins.addEventListener('click', (e) => {
     if (e.target.className === 'btn add') {
       let temp_coin = e.target.parentNode.childNodes[1].childNodes[1].textContent;
-      portfolio_coins.push(temp_coin);
-      load_portfolio();
+      if (portfolio_coins.indexOf(temp_coin) == -1) {
+        portfolio_coins.push(temp_coin);
+        load_portfolio();
+        changeBtn();
+      }
     }
     e.stopPropagation();
   }, false)
@@ -121,6 +136,7 @@ portfolio.addEventListener('click', (e) => {
     let index = portfolio_coins.indexOf(temp_coin);
     portfolio_coins.splice(index, 1);
     load_portfolio();
+    changeBtn();
   }
 })
 
